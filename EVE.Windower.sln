@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EVE.Windower.UI", "EVE.Windower.UI\EVE.Windower.UI.csproj", "{065B7390-F369-4721-947E-A3B3CE791821}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EVE.Windower.Common", "EVE.Windower.Common\EVE.Windower.Common.csproj", "{52FE0404-A40B-4079-B990-B3D45933CC18}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EVE.Windower.Common.Tests", "EVE.Windower.Common.Tests\EVE.Windower.Common.Tests.csproj", "{BA276220-0D65-4CE3-9C50-D6CE82E25CF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E935A368-EDC9-4E59-8C00-940170E38799}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{9983F818-5F8D-41DF-9FD2-72608037BFFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{FB88FE40-3AB8-4488-BCAC-CEA8D286C404}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\UpdateAssemblyInfo.ps1 = .github\workflows\UpdateAssemblyInfo.ps1
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{065B7390-F369-4721-947E-A3B3CE791821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{065B7390-F369-4721-947E-A3B3CE791821}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{065B7390-F369-4721-947E-A3B3CE791821}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{065B7390-F369-4721-947E-A3B3CE791821}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52FE0404-A40B-4079-B990-B3D45933CC18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52FE0404-A40B-4079-B990-B3D45933CC18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52FE0404-A40B-4079-B990-B3D45933CC18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52FE0404-A40B-4079-B990-B3D45933CC18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA276220-0D65-4CE3-9C50-D6CE82E25CF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA276220-0D65-4CE3-9C50-D6CE82E25CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA276220-0D65-4CE3-9C50-D6CE82E25CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA276220-0D65-4CE3-9C50-D6CE82E25CF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9983F818-5F8D-41DF-9FD2-72608037BFFB} = {E935A368-EDC9-4E59-8C00-940170E38799}
+		{FB88FE40-3AB8-4488-BCAC-CEA8D286C404} = {9983F818-5F8D-41DF-9FD2-72608037BFFB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A420173-8197-4013-A52F-C0AA83344999}
+	EndGlobalSection
+EndGlobal

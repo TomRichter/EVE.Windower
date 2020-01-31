@@ -1,0 +1,59 @@
+name: Build .NET Core
+on:
+  push:
+    tags: 
+      - "v*"
+
+jobs:
+  tagged-release:
+    name: "Tagged Release"
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+      
+    - name: Process Version from Tag
+      id: version
+      uses: ncipollo/semantic-version-action@v1
+    
+    - name: Update Version in AssemblyInfo.cs
+      env:
+        BUILD_VERSION: ${{ steps.version.outputs.tag }}
+      run: .\.github\workflows\UpdateAssemblyInfo.ps1
+    
+    - name: Write Version to Text File
+      env:
+        BUILD_VERSION: ${{ steps.version.outputs.tag }}
+      run: |
+        echo "source: ${Env:GITHUB_REPOSITORY}" > "${Env:GITHUB_WORKSPACE}\VERSION.md"
+        echo "version: ${Env:BUILD_VERSION}" >> "${Env:GITHUB_WORKSPACE}\VERSION.md"
+        echo "commit: ${Env:GITHUB_SHA}" >> "${Env:GITHUB_WORKSPACE}\VERSION.md"
+        echo "date: $((Get-Date -format r).ToString())" >> "${Env:GITHUB_WORKSPACE}\VERSION.md"
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+        source-url: https://nuget.pkg.github.com/TomRichter/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+    
+    - name: Package Artifacts
+      env:
+        BUILD_VERSION: ${{ steps.version.outputs.tag }}
+      run: |
+        $BuildName = (gci *.sln)[0].BaseName
+        7z a "${BuildName}-${Env:BUILD_VERSION}.zip" "${Env:GITHUB_WORKSPACE}\${BuildName}\bin\Release\" "-xr!*.pdb" "-mx=7"
+        7z rn "${BuildName}-${Env:BUILD_VERSION}.zip" "Release" "${BuildName}"
+    
+    - name: Publish to GitHub Releases
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: false
+        files: |
+          *.zip

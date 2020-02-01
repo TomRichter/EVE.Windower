@@ -8,20 +8,15 @@ jobs:
   tagged-release:
     name: "Tagged Release"
     runs-on: windows-latest
-    
+
     steps:
     - name: Checkout
-      uses: actions/checkout@master
-      
+      uses: actions/checkout@v2
+
     - name: Process Version from Tag
       id: version
       uses: ncipollo/semantic-version-action@v1
-    
-    - name: Update Version in AssemblyInfo.cs
-      env:
-        BUILD_VERSION: ${{ steps.version.outputs.tag }}
-      run: .\.github\workflows\UpdateAssemblyInfo.ps1
-    
+
     - name: Write Version to Text File
       env:
         BUILD_VERSION: ${{ steps.version.outputs.tag }}
@@ -35,21 +30,27 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-        source-url: https://nuget.pkg.github.com/TomRichter/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Build with dotnet
-      run: dotnet build --configuration Release
-    
+      env:
+        BUILD_VERSION: ${{ steps.version.outputs.tag }}
+      run: |
+        $VERSION = ${Env:BUILD_VERSION}.Substring(1)
+        $COMMIT_HASH = ${Env:GITHUB_SHA}.Substring(0, 7)
+        $INFORMATIONAL_VERSION="${VERSION}+${$COMMIT_HASH}"
+        dotnet build --configuration Release /p:VersionPrefix=${VERSION} /p:InformationalVersion=${INFORMATIONAL_VERSION}
+
     - name: Package Artifacts
       env:
         BUILD_VERSION: ${{ steps.version.outputs.tag }}
       run: |
         $BuildName = (gci *.sln)[0].BaseName
-        7z a "${BuildName}-${Env:BUILD_VERSION}.zip" "${Env:GITHUB_WORKSPACE}\${BuildName}\bin\Release\" "-xr!*.pdb" "-mx=7"
-        7z rn "${BuildName}-${Env:BUILD_VERSION}.zip" "Release" "${BuildName}"
-    
+        $BuildDir = ${BuildName} + ".UI\bin\Release\netcoreapp3.1\"
+        7z a "${BuildName}-${Env:BUILD_VERSION}.zip" "${Env:GITHUB_WORKSPACE}\${BuildDir}" "-xr!*.pdb" "-mx=7"
+        # Adding folders with 7z uses the last folder name in $BuildDir (e.g., netcoreapp3.1), so it needs to be renamed
+        $FolderToRename = Split-Path ${BuildDir} -Leaf  
+        7z rn "${BuildName}-${Env:BUILD_VERSION}.zip" "${FolderToRename}" "${BuildName}"
+
     - name: Publish to GitHub Releases
       uses: "marvinpinto/action-automatic-releases@latest"
       with:

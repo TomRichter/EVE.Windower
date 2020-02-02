@@ -1,8 +1,7 @@
 ﻿<Application x:Class="EVE.Windower.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:EVE.Windower"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:EVE.Windower">
     <Application.Resources>
          
     </Application.Resources>

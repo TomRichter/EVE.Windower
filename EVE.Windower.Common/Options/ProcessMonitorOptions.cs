@@ -1,4 +1,4 @@
-﻿namespace EVE.Windower.Common.Models
+﻿namespace EVE.Windower.Common.Options
 {
     public class ProcessMonitorOptions
     {

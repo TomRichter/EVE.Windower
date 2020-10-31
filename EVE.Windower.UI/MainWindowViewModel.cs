@@ -1,14 +1,17 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using EVE.Windower.Common.Logging;
+using EVE.Windower.Common.Services;
+using Microsoft.Extensions.Logging;
 
 namespace EVE.Windower.UI
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : AbstractLoggable
     {
-        private readonly ILogger<MainWindowViewModel> _logger;
-
-        public MainWindowViewModel(ILogger<MainWindowViewModel> logger)
+        public MainWindowViewModel(
+            ILogger<MainWindowViewModel> logger,
+            IProcessMonitor procMon
+        ) : base(logger)
         {
-            _logger = logger;
+            procMon.StartMonitoring();
         }
     }
 }

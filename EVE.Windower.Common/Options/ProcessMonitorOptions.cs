@@ -1,5 +1,10 @@
-﻿namespace EVE.Windower.Common.Options
+﻿using EVE.Windower.Common.Services;
+
+namespace EVE.Windower.Common.Options
 {
+    /// <summary>
+    /// Strongly-typed options for the <see cref="IProcessMonitor"/>.
+    /// </summary>
     public class ProcessMonitorOptions
     {
         /// <summary>

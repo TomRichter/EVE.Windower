@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Configuration;
 using Serilog;
-using Serilog.Events;
+using Serilog.Extensions.Logging;
 using System;
 using System.IO;
 using System.Reflection;
@@ -23,6 +23,9 @@ namespace EVE.Windower
 
         private IServiceProvider _services;
 
+        /// <summary>
+        /// Main entry point for the program.
+        /// </summary>
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -59,7 +62,7 @@ namespace EVE.Windower
                 .Enrich.FromLogContext()
                 .MinimumLevel.Verbose()
                 .WriteTo.File($"Logs/{assembly.Name}_{DateTime.Now:yyy-MM-dd_HH-mm-ss}.log",
-                    restrictedToMinimumLevel: config.GetValue<LogEventLevel>("Logging:LogLevel:File"),
+                    restrictedToMinimumLevel: LevelConvert.ToSerilogLevel(config.GetValue<LogLevel>("Logging:LogLevel:File")),
                     outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] [{SourceContext:l}] {Message:lj}{NewLine}{Exception}",
                     // Auto-split logs that get too large; "exe-datetime_#.log"
                     // Max 7 MB logs to work with Discord's 8 MB file size limits
@@ -67,7 +70,7 @@ namespace EVE.Windower
                     fileSizeLimitBytes: 7_340_032
                 )
                 .WriteTo.Console(
-                    restrictedToMinimumLevel: config.GetValue<LogEventLevel>("Logging:LogLevel:Default"),
+                    restrictedToMinimumLevel: LevelConvert.ToSerilogLevel(config.GetValue<LogLevel>("Logging:LogLevel:Default")),
                     outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] [{SourceContext:l}] {Message:lj}{NewLine}{Exception}"
                 )
                 .CreateLogger();

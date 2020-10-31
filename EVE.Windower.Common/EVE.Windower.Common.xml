@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EVE.Windower.Common</name>
+    </assembly>
+    <members>
+        <member name="T:EVE.Windower.Common.Localization.Translations">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:EVE.Windower.Common.Localization.Translations.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:EVE.Windower.Common.Localization.Translations.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:EVE.Windower.Common.Localization.Translations.LOG_PROCMON_ADDED">
+            <summary>
+              Looks up a localized string similar to Added Process: &quot;{windowTitle}&quot; {processName}.
+            </summary>
+        </member>
+        <member name="P:EVE.Windower.Common.Localization.Translations.LOG_PROCMON_REMOVED">
+            <summary>
+              Looks up a localized string similar to Removed Process: &quot;{windowTitle}&quot; {processName}.
+            </summary>
+        </member>
+        <member name="P:EVE.Windower.Common.Localization.Translations.LOG_PROCMON_STARTED">
+            <summary>
+              Looks up a localized string similar to Started Process Monitor..
+            </summary>
+        </member>
+        <member name="P:EVE.Windower.Common.Localization.Translations.LOG_PROCMON_STOPPED">
+            <summary>
+              Looks up a localized string similar to Stopped Process Monitor..
+            </summary>
+        </member>
+        <member name="P:EVE.Windower.Common.Localization.Translations.LOG_PROCMON_TICKED">
+            <summary>
+              Looks up a localized string similar to Ticked Process Monitor..
+            </summary>
+        </member>
+        <member name="T:EVE.Windower.Common.Logging.AbstractLoggable">
+            <summary>
+            Adds logging under a standard field name.
+            </summary>
+        </member>
+        <member name="F:EVE.Windower.Common.Logging.AbstractLoggable.Logger">
+            <summary>
+            <see cref="T:Microsoft.Extensions.Logging.ILogger"/> instance configured to display current class in log lines.
+            </summary>
+        </member>
+        <member name="M:EVE.Windower.Common.Logging.AbstractLoggable.#ctor(Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EVE.Windower.Common.Logging.AbstractLoggable"/> class.
+            </summary>
+        </member>
+        <member name="T:EVE.Windower.Common.Models.ProcessInfo">
+            <summary>
+            Wrapper around a running system process.
+            </summary>
+        </member>
+        <member name="M:EVE.Windower.Common.Models.ProcessInfo.#ctor(System.Diagnostics.Process)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EVE.Windower.Common.Models.ProcessInfo"/> class.
+            </summary>
+        </member>
+        <member name="T:EVE.Windower.Common.Models.WindowInfo">
+            <summary>
+            Wrapper around a running system process's window.
+            </summary>
+        </member>
+        <member name="T:EVE.Windower.Common.Options.AbstractLoggableWithOptions">
+            <summary>
+            Adds options under a standard field name.
+            </summary>
+        </member>
+        <member name="F:EVE.Windower.Common.Options.AbstractLoggableWithOptions._processMonitorOptionsMonitor">
+            <summary>
+            Tracks the live state of <see cref="T:EVE.Windower.Common.Options.ProcessMonitorOptions"/> in settings file, env vars, etc.
+            </summary>
+        </member>
+        <member name="P:EVE.Windower.Common.Options.AbstractLoggableWithOptions.ProcessMonitorOptions">
+            <summary>
+            Gets the current values for <see cref="T:EVE.Windower.Common.Options.ProcessMonitorOptions"/>.
+            </summary>
+        </member>
+        <member name="M:EVE.Windower.Common.Options.AbstractLoggableWithOptions.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Options.IOptionsMonitor{EVE.Windower.Common.Options.ProcessMonitorOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EVE.Windower.Common.Options.AbstractLoggableWithOptions"/> class.
+            </summary>
+        </member>
+        <member name="P:EVE.Windower.Common.Options.ProcessMonitorOptions.ScanInterval">
+            <summary>
+            How often new processes are scanned for, in milliseconds.
+            </summary>
+        </member>
+        <member name="P:EVE.Windower.Common.Options.ProcessMonitorOptions.ProcessName">
+            <summary>
+            Process name to scan for.
+            </summary>
+        </member>
+        <member name="T:EVE.Windower.Common.Services.IProcessMonitor">
+            <summary>
+            Keeps track of relevant system processes and emits events when they start or end.
+            </summary>
+        </member>
+        <member name="T:EVE.Windower.Common.Services.IProcessMonitor.ProcessStarted">
+            <summary>
+            Event fired when a new process has started.
+            </summary>
+            <param name="process">Process that started.</param>
+        </member>
+        <member name="T:EVE.Windower.Common.Services.IProcessMonitor.ProcessExited">
+            <summary>
+            Event fired when a process has exited.
+            </summary>
+            <param name="process">Process that exited.</param>
+        </member>
+        <member name="M:EVE.Windower.Common.Services.IProcessMonitor.StartMonitoring">
+            <summary>
+            Starts monitoring system processes in a separate thread.
+            </summary>
+        </member>
+        <member name="M:EVE.Windower.Common.Services.IProcessMonitor.StopMonitoring">
+            <summary>
+            Stops monitoring system processes.
+            </summary>
+        </member>
+        <member name="M:EVE.Windower.Common.Services.IProcessMonitor.StartProcess">
+            <summary>
+            Starts a new process.
+            </summary>
+            <returns>Newly started process.</returns>
+        </member>
+        <member name="M:EVE.Windower.Common.Services.IProcessMonitor.ExitProcess(EVE.Windower.Common.Models.ProcessInfo)">
+            <summary>
+            Exits the given process.
+            </summary>
+            <param name="process">Process to be exited.</param>
+        </member>
+        <member name="T:EVE.Windower.Common.Services.IWindowMonitor.WindowRenamed">
+            <summary>
+            Event fired when window title gets changed.
+            </summary>
+            <param name="window">Renamed window</param>
+        </member>
+        <member name="T:EVE.Windower.Common.Services.IWindowMonitor.WindowMoved">
+            <summary>
+            Event fired when window gets moved.
+            </summary>
+            <param name="window">Moved window</param>
+        </member>
+        <member name="T:EVE.Windower.Common.Services.IWindowMonitor.WindowResized">
+            <summary>
+            Event fired when window gets resized.
+            </summary>
+            <param name="window">Resized window</param>
+        </member>
+        <member name="T:EVE.Windower.Common.Services.IWindowMonitor.WindowFocused">
+            <summary>
+            Event fired when window becomes focused (e.g., alt-tabbed to).
+            </summary>
+            <param name="window">Focused window</param>
+        </member>
+        <member name="T:EVE.Windower.Common.Services.IWindowMonitor.WindowUnfocused">
+            <summary>
+            Event fired when window becomes unfocused (e.g., alt-tabbed away from).
+            </summary>
+            <param name="window">Unfocused window</param>
+        </member>
+        <member name="T:EVE.Windower.Common.Services.ProcessMonitor">
+            <summary>
+            Keeps track of relevant system processes and emits events when they start or end.
+            </summary>
+        </member>
+        <member name="T:EVE.Windower.Common.Services.ProcessMonitor.ProcessStarted">
+            <summary>
+            Event fired when a new process has started.
+            </summary>
+            <param name="process">Process that started.</param>
+        </member>
+        <member name="T:EVE.Windower.Common.Services.ProcessMonitor.ProcessExited">
+            <summary>
+            Event fired when a process has exited.
+            </summary>
+            <param name="process">Process that exited.</param>
+        </member>
+        <member name="M:EVE.Windower.Common.Services.ProcessMonitor.#ctor(Microsoft.Extensions.Logging.ILogger{EVE.Windower.Common.Services.ProcessMonitor},Microsoft.Extensions.Options.IOptionsMonitor{EVE.Windower.Common.Options.ProcessMonitorOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EVE.Windower.Common.Services.ProcessMonitor"/> class.
+            </summary>
+        </member>
+        <member name="M:EVE.Windower.Common.Services.ProcessMonitor.StartMonitoring">
+            <inheritdoc/>
+        </member>
+        <member name="M:EVE.Windower.Common.Services.ProcessMonitor.StopMonitoring">
+            <inheritdoc/>
+        </member>
+        <member name="M:EVE.Windower.Common.Services.ProcessMonitor.StartProcess">
+            <inheritdoc/>
+        </member>
+        <member name="M:EVE.Windower.Common.Services.ProcessMonitor.ExitProcess(EVE.Windower.Common.Models.ProcessInfo)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

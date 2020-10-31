@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EVE.Windower</name>
+    </assembly>
+    <members>
+        <member name="T:EVE.Windower.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:EVE.Windower.App.OnStartup(System.Windows.StartupEventArgs)">
+            <summary>
+            Main entry point for the program.
+            </summary>
+        </member>
+        <member name="M:EVE.Windower.App.BuildConfiguration">
+            <summary>
+            Inflates configuration object from configuration sources.
+            </summary>
+            <returns>Configuration</returns>
+        </member>
+        <member name="M:EVE.Windower.App.StartLogger(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Creates logging provider and writes basic info to beginning of log.
+            </summary>
+            <param name="config">Application configuration</param>
+        </member>
+        <member name="M:EVE.Windower.App.BuildServiceProvider(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configures and builds dependency injection service provider.
+            </summary>
+            <param name="config">Application configuration</param>
+            <returns>Service provider</returns>
+        </member>
+        <member name="M:EVE.Windower.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:EVE.Windower.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:EVE.Windower.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

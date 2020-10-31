@@ -61,6 +61,24 @@ namespace EVE.Windower.Common.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Added Process: &quot;{windowTitle}&quot; {processName}.
+        /// </summary>
+        public static string LOG_PROCMON_ADDED {
+            get {
+                return ResourceManager.GetString("LOG_PROCMON_ADDED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removed Process: &quot;{windowTitle}&quot; {processName}.
+        /// </summary>
+        public static string LOG_PROCMON_REMOVED {
+            get {
+                return ResourceManager.GetString("LOG_PROCMON_REMOVED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Started Process Monitor..
         /// </summary>
         public static string LOG_PROCMON_STARTED {

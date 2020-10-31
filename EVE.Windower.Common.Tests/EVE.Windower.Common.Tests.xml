@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EVE.Windower.Common.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:EVE.Windower.Common.Tests.SampleTestFixture">
+            <summary>
+            Placeholder test.
+            </summary>
+        </member>
+        <member name="M:EVE.Windower.Common.Tests.SampleTestFixture.AlwaysPasses">
+            <summary>
+            Always passes.
+            </summary>
+        </member>
+    </members>
+</doc>

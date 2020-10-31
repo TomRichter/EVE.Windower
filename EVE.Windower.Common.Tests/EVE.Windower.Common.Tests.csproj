@@ -3,6 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DocumentationFile>D:\Users\User\Desktop\Category\Projects\EVE.Windower\EVE.Windower.Common.Tests\EVE.Windower.Common.Tests.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

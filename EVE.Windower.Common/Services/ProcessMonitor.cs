@@ -89,6 +89,7 @@ namespace EVE.Windower.Common.Services
                 {
                     process.EnableRaisingEvents = true;
                     process.Exited += OnProcessExited;
+                    process.PriorityClass = ProcessPriorityClass.Idle;
 
                     _knownProcesses.Add(process.Id, new ProcessInfo(process));
 
@@ -103,18 +104,6 @@ namespace EVE.Windower.Common.Services
             _knownProcesses.Remove(process.Id);
 
             Logger.LogInformation(Translations.LOG_PROCMON_REMOVED, process.MainWindowTitle, process.ProcessName);
-        }
-
-        /// <inheritdoc/>
-        public ProcessInfo StartProcess()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        /// <inheritdoc/>
-        public void ExitProcess(ProcessInfo process)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

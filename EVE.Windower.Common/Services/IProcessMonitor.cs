@@ -28,17 +28,5 @@ namespace EVE.Windower.Common.Services
         /// Stops monitoring system processes.
         /// </summary>
         public void StopMonitoring();
-
-        /// <summary>
-        /// Starts a new process.
-        /// </summary>
-        /// <returns>Newly started process.</returns>
-        public ProcessInfo StartProcess();
-
-        /// <summary>
-        /// Exits the given process.
-        /// </summary>
-        /// <param name="process">Process to be exited.</param>
-        public void ExitProcess(ProcessInfo process);
     }
 }

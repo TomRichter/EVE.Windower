@@ -49,9 +49,24 @@
             MainWindow
             </summary>
         </member>
+        <member name="M:EVE.Windower.MainWindow.#ctor(EVE.Windower.UI.MainWindowViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EVE.Windower.MainWindow"/> class.
+            </summary>
+        </member>
         <member name="M:EVE.Windower.MainWindow.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:EVE.Windower.UI.MainWindowViewModel">
+            <summary>
+            ViewModel behind the <see cref="T:EVE.Windower.MainWindow"/>.
+            </summary>
+        </member>
+        <member name="M:EVE.Windower.UI.MainWindowViewModel.#ctor(Microsoft.Extensions.Logging.ILogger{EVE.Windower.UI.MainWindowViewModel},EVE.Windower.Common.Services.IProcessMonitor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EVE.Windower.UI.MainWindowViewModel"/> class.
             </summary>
         </member>
     </members>

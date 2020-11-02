@@ -95,6 +95,11 @@
             Initializes a new instance of the <see cref="T:EVE.Windower.Common.Options.AbstractLoggableWithOptions"/> class.
             </summary>
         </member>
+        <member name="T:EVE.Windower.Common.Options.ProcessMonitorOptions">
+            <summary>
+            Strongly-typed options for the <see cref="T:EVE.Windower.Common.Services.IProcessMonitor"/>.
+            </summary>
+        </member>
         <member name="P:EVE.Windower.Common.Options.ProcessMonitorOptions.ScanInterval">
             <summary>
             How often new processes are scanned for, in milliseconds.
@@ -131,18 +136,6 @@
             <summary>
             Stops monitoring system processes.
             </summary>
-        </member>
-        <member name="M:EVE.Windower.Common.Services.IProcessMonitor.StartProcess">
-            <summary>
-            Starts a new process.
-            </summary>
-            <returns>Newly started process.</returns>
-        </member>
-        <member name="M:EVE.Windower.Common.Services.IProcessMonitor.ExitProcess(EVE.Windower.Common.Models.ProcessInfo)">
-            <summary>
-            Exits the given process.
-            </summary>
-            <param name="process">Process to be exited.</param>
         </member>
         <member name="T:EVE.Windower.Common.Services.IWindowMonitor.WindowRenamed">
             <summary>
@@ -200,12 +193,6 @@
             <inheritdoc/>
         </member>
         <member name="M:EVE.Windower.Common.Services.ProcessMonitor.StopMonitoring">
-            <inheritdoc/>
-        </member>
-        <member name="M:EVE.Windower.Common.Services.ProcessMonitor.StartProcess">
-            <inheritdoc/>
-        </member>
-        <member name="M:EVE.Windower.Common.Services.ProcessMonitor.ExitProcess(EVE.Windower.Common.Models.ProcessInfo)">
             <inheritdoc/>
         </member>
     </members>
